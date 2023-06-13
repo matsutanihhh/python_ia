@@ -18,7 +18,7 @@ with open('sample.txt', 'w', encoding='utf-8') as file:
 #     if file:
 #         file.close()
 
-with open('sample.txt', '', encoding='utf-8') as file:
+with open('sample.txt', 'r', encoding='utf-8') as file:
     # ファイルの読み出し
     # text = file.read()
 
