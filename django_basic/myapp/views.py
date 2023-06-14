@@ -13,3 +13,4 @@ def hello(request):
 def home(request):
     # render関数を使うとtemplatesフォルダ内のhtmlファイルを指定できる
     return render(request, 'myapp/home.html')
+
