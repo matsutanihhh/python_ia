@@ -1,0 +1,21 @@
+<!doctype html>
+  <html lang="ja">
+  <head>
+  <meta charset="UTF-8">
+  <title>Python 講座</title>
+  </head>
+  <body>
+  <h1>部署作成ページ</h1>
+<!--  データの削除、追加、更新はformタグを使い
+　　　　　・method="post"
+　　　　　・{% csrf_token %}
+　　　　　・<input type="submit" value="作成"> か <button type="submit">作成</button>
+　　　　が必ず必要
+-->
+
+  <form method="post">{% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="作成">
+  </form>
+  </body>
+  </html>

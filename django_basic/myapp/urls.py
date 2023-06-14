@@ -11,5 +11,11 @@ urlpatterns = [
     # どのurlでどのビューを呼ぶかを登録する
     # views.pyのhello関数を呼ぶ
     path('hello/', views.hello, name='hello'),
-    path('home/', views.home, name='home')
+    path('home/', views.home, name='home'),
+    path('home2/', views.home2, name='home2'),
+    path('kome/', views.kome, name='kome'),
+    # クラスビューの時のpathの記述の仕方
+    # views.クラス名.as_view() と書く必要がある
+    path('home3/', views.Home.as_view(), name='home3'),
+    path('lesson/', views.lesson, name='lesson')
 ]

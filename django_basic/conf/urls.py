@@ -31,4 +31,5 @@ urlpatterns = [
     # urlの末尾には必ず『/』を入れるように統一する
     path('admin/', admin.site.urls),
     path('myapp/', include('myapp.urls')), # myappのurls.pyを読み込む
+    path('myapp2/', include('myapp2.urls')) # myappのurls.pyを読み込む
 ]
