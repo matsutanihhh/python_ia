@@ -7,8 +7,14 @@ class StaffInformationForm(forms.ModelForm):
     class Meta:
         model = StaffInformation
         # fieldsは画面上に表示する入力欄と対応している
-        # 全項目表示したいときは fields = ('__all__') とすると楽
-        # 逆に取り除きたい項目がある場合は fields =
+        # #フィールド全て
+        # fields = "__all__"
+        #
+        # #フィールドの一部
+        # fields = ["フィールド1", "フィールド2"]
+        #
+        # #一部のフィールドを除く
+        # exclude = "除きたいフィールド"
         fields = ('staff_name', 'email', 'address', 'birthday', 'hire_date', 'at_desk')
 
 

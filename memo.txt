@@ -1,0 +1,79 @@
+staff_detail.html の元ファイル
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="ja">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>社員詳細ページ</h1>-->
+<!--&lt;!&ndash;    <div>&ndash;&gt;-->
+<!--&lt;!&ndash;    スタッフのid. {{ staff.pk }} &lt;!&ndash;({{ staff.id }}と書くのと、基本的に同じ)&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    {{ staff.name }}&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <br>&ndash;&gt;-->
+<!--    　　　　　　　　　　　&lt;!&ndash;　↓　object or モデル名&ndash;&gt;-->
+<!--    <p>ビジネスネーム：{{ staff.name }}</p>-->
+<!--    &lt;!&ndash;取り出したフィールドがOneToOneやForeignKeyの場合は、-->
+<!--        さらにリレーション先のフィールド名を書いてデータを取ってこれる&ndash;&gt;-->
+<!--    <p>メールアドレス：{{ staff.information.email | default:'未入力' }}</p>-->
+<!--    <p>入社日：{{ staff.information.hire_date | date:'Y/m/d' }}</p>-->
+<!--    <p>部署：{{ staff.department.name }}</p>-->
+<!--    {% if object.information.at_desk%}-->
+<!--    <p>出社状況：勤務中</p>-->
+<!--        {% else %}-->
+<!--        <p>出社状況：不在</p>-->
+<!--        {% endif %}-->
+<!--    <h2> 借りている本一覧 </h2>-->
+<!--&lt;!&ndash;                 　↓　インスタンス.ManyToManyField名.all&ndash;&gt;-->
+<!--  <p>  {% for book in staff.rented_books.all %}-->
+<!--        {{ book.name }},-->
+<!--    {% endfor %}-->
+<!--  </p>-->
+
+
+
+<!--
+<h1>社員詳細ページ</h1>
+<p>ビジネスネーム:{{ staff.name }}</p> -->
+<!-- 取り出したフィールドがOneToneOneやForeignKeyの場合は、さらに.フィールド名と書ける -->
+<!--
+    <p>メールアドレス:{{ staff.information.email|default:'未入力'}}</p>
+<p>入社日：{{ staff.information.hire_date|date:'Y/m/d' }}</p>
+<p>部署:{{ staff.department.name }}</p>
+<p>{{ staff.information.birthday }}</p>
+<p>
+    {% if staff.information.at_desk %}
+        出社してる
+    {% else %}
+        不在
+    {% endif %}
+</p>
+<p> -->
+    <!-- インスタンス.ManyToManyField名.all -->
+  <!--  {% for book in staff.rented_books.all %}
+        {{ book.name }},
+    {% endfor %}
+</p>
+    -->
+
+<!--
+上の、ManyToManyField取り出しの、別パターン
+def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    staff = self.get_object()
+    context['books'] = staff.rented_books.all()
+    return context
+<p>
+    {% for book in books %}
+        {{ book.name }},
+    {% endfor %}
+</p>
+-->
+
+
+<!--</body>-->
+<!--</html>-->
+

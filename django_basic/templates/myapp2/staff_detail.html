@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h1>社員詳細ページ</h1>
+        <p>ビジネスネーム:{{ staff.name }}</p>
+        <!-- 取り出したフィールドがOneToneOneやForeignKeyの場合は、さらに.フィールド名と書ける -->
+        <p>メールアドレス:{{ staff.information.email|default:'未入力'}}</p>
+        <p>入社日：{{ staff.information.hire_date|date:'Y/m/d' }}</p>
+        <p>部署:{{ staff.department.name }}</p>
+        <p>{{ staff.information.birthday }}</p>
+        <p>
+            {% if staff.information.at_desk %}
+                出社してる
+            {% else %}
+                不在
+            {% endif %}
+        </p>
+        <p>
+            <!-- インスタンス.ManyToManyField名.all -->
+            {% for book in staff.rented_books.all %}
+                {{ book.name }},
+            {% endfor %}
+        </p>
+    </div>
+{% endblock %}

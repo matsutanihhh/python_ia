@@ -17,6 +17,33 @@ class StaffListView(ListView):
     template_name = 'myapp2/staff_list.html'
 
 
+class StaffDetailView(DetailView):
+    model = Staff
+    template_name = 'myapp2/staff_detail.html'
+
+    #DetailViewがもともと持っている、get_objectメソッドの紹介。
+    # データベースから、1つのデータを取得する
+
+    def get_object(self, queryset=None):
+        # self.kwargsは、URL内の int:pkといった部分が入っている
+        staff = Staff.objects.get(pk=self.kwargs['pk'])
+        # →Staff.objects.get(pk=1)  # 今回、URLは/staff_detail/1/
+        # →Staff.objects.get(id=1)  # pkというのは、primarykeyのこと。今回ならidフィールドのこと
+        #print(staff.name) # ここで書くとターミナルに表示される
+        return staff
+
+    def get_context_data(self, **kwargs):
+        # contextは取ってこなければならない
+        # 新しく作るとstaffに入ったデータが取ってこられない
+        context = super().get_context_data(**kwargs)
+        # DetailViewにはget_objectメソッドがあり
+        # URLのidを元にモデルのインスタンスを取得している
+        staff = self.get_object()
+        books = staff.rented_books.all()
+        context['books'] = books
+        return context
+
+
 class StaffInformationCreateView(CreateView):
     model = StaffInformation
     form_class = StaffInformationForm
@@ -26,7 +53,7 @@ class StaffInformationCreateView(CreateView):
     # URLの逆引き app_name:path関数のname
     success_url = reverse_lazy('myapp:home')
     # 結果的に次のようになっている
-    # success_url = '/home/'
+    # success_url = 'myapp/home/'
 
 
 class DepartmentCreateView(CreateView):

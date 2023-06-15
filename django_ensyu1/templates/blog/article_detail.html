@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ArticleDetail</title>
+</head>
+<body>
+<h1>記事詳細</h1>
+<h3>タイトル</h3>
+<p>{{article.title}}</p>
+<h3>カテゴリ</h3>
+<p>{{article.category}}</p>
+<h3>タグ</h3>
+<p>
+    <!-- インスタンス.ManyToManyField名.all -->
+    {% for tag in article.tags.all %}
+        {{ tag.name }},
+    {% endfor %}
+</p>
+<h3>作成日</h3>
+<p>{{article.created_at | date:'Y/m/d H:i:s'}}</p>
+<h3>本文</h3>
+<!--linebreaks: 改行をHTML上に反映させるフィルタ-->
+<p>{{article.text | linebreaks }}</p>
+</body>
+</html>

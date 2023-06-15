@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>記事一覧</h1>
+<!--  モデル名小文字表記_list に、そのモデルのデータ一覧が入って渡ってくる-->
+
+  <p>{% for article in article_list %}
+    <!-- モデルのインスタンスが渡されている 変数名.フィールド -->
+    {{article.title}}:
+      {% for tag in article.tags.all %}
+      {{ tag.name }}
+      {% endfor %}
+  <br>
+  {% endfor %}
+  </p>
+</body>
+</html>
