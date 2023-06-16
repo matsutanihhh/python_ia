@@ -1,6 +1,7 @@
 from django import forms
 from .models import StaffInformation, Department, Book, Staff
 
+
 # ModelFormを継承することで簡単に入力フォームが作れる
 class StaffInformationForm(forms.ModelForm):
     # Djangoでは class Meta: というものを定義する
@@ -34,3 +35,9 @@ class StaffForm(forms.ModelForm):
     class Meta:
         model = Staff
         fields = ('name', 'information', 'department', 'rented_books')
+
+
+class StaffInformationUpdateForm(forms.ModelForm):
+    class Meta:
+        model = StaffInformation
+        fields = ('staff_name', 'email', 'address', 'birthday', 'hire_date', 'at_desk')

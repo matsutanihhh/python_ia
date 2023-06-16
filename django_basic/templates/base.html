@@ -2,11 +2,12 @@
   {% load static %}
   <html lang="ja">
   <head>
+<!--本来は<link rel="stylesheet" href="ファイルのパス">-->
       <link rel="stylesheet" href="{% static 'css/basic.css' %}">
       <title>{% block title %}Python 講座{% endblock %}</title>
   </head>
   <body>
-      <p><a href={% url "myapp:home" %}>Homeへ</a></p>
+      <p><a href="{% url 'myapp:home' %}">Homeへ</a></p>
       <div id="content">
         {% block content %}{% endblock %}
       </div>

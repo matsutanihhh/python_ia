@@ -2,8 +2,9 @@ from django.views.generic import CreateView, DetailView, UpdateView, FormView, L
 
 # Create your views here.
 from django.views import generic
-
+from django.urls import reverse_lazy
 from .models import Article, Tag, Category
+from .forms import TagCreateForm, ArticleCreateForm
 
 
 class Home(generic.TemplateView):
@@ -50,3 +51,17 @@ class ArticleDetailView(DetailView):
         tags = article.tags.all()
         context['books'] = tags
         return context
+
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    template_name = 'blog/tag_create.html'
+    success_url = reverse_lazy('blog:article_list')  # テンプレートで使った、urlタグみたいなもの
+    form_class = TagCreateForm
+
+
+class ArticleCreateView(generic.CreateView):
+    model = Article
+    template_name = 'blog/article_create.html'
+    success_url = reverse_lazy('blog:article_list')  # テンプレートで使った、urlタグみたいなもの
+    form_class = ArticleCreateForm

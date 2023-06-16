@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
   <h1>記事一覧</h1>
 <!--  モデル名小文字表記_list に、そのモデルのデータ一覧が入って渡ってくる-->
 
   <p>{% for article in article_list %}
     <!-- モデルのインスタンスが渡されている 変数名.フィールド -->
-    {{article.title}}:
+      <a href="{% url 'blog:article_detail' article.pk %}">{{article.title}}</a>:
       {% for tag in article.tags.all %}
-      {{ tag.name }}
+        {{ tag.name }}
       {% endfor %}
   <br>
   {% endfor %}
   </p>
-</body>
-</html>
+
+{% endblock %}

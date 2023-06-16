@@ -5,11 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-  <h1>スタッフの一覧</h1>
+    <h1>スタッフの一覧</h1>
 <!--  モデル名小文字表記_list に、そのモデルのデータ一覧が入って渡ってくる-->
-  {% for staff in staff_list %}
+    {% for staff in staff_list %}
     <!-- モデルのインスタンスが渡されている 変数名.フィールド -->
-    <div>{{staff.name}}</div>
-  {% endfor %}
+        <div>{{staff.name}}：{{ staff.department.name }}</div>
+        <div>
+        {% for book in staff.rented_books.all %}
+            {{ book.name }}
+        {% endfor %}
+        </div>
+        <br>
+    {% endfor %}
 </body>
 </html>

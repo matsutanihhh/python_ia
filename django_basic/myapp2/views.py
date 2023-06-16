@@ -17,11 +17,16 @@ class StaffListView(ListView):
     template_name = 'myapp2/staff_list.html'
 
 
+class DepartmentListView(ListView):
+    model = Department
+    template_name = 'myapp2/department_list.html'
+
+
 class StaffDetailView(DetailView):
     model = Staff
     template_name = 'myapp2/staff_detail.html'
 
-    #DetailViewがもともと持っている、get_objectメソッドの紹介。
+    # DetailViewがもともと持っている、get_objectメソッドの紹介。
     # データベースから、1つのデータを取得する
 
     def get_object(self, queryset=None):
@@ -29,7 +34,7 @@ class StaffDetailView(DetailView):
         staff = Staff.objects.get(pk=self.kwargs['pk'])
         # →Staff.objects.get(pk=1)  # 今回、URLは/staff_detail/1/
         # →Staff.objects.get(id=1)  # pkというのは、primarykeyのこと。今回ならidフィールドのこと
-        #print(staff.name) # ここで書くとターミナルに表示される
+        # print(staff.name) # ここで書くとターミナルに表示される
         return staff
 
     def get_context_data(self, **kwargs):
@@ -76,6 +81,7 @@ class StaffCreateView(CreateView):
     template_name = 'myapp2/staff_create.html'
     success_url = reverse_lazy('myapp:home')
 
+
 # CreateViewの中で行われている処理の流れ
 
 # def staff_information(request):
@@ -95,3 +101,16 @@ class StaffCreateView(CreateView):
 #             'form': form,
 #         }
 #         return render(request, 'myapp/staff_information_create.html', context)
+
+class StaffInformationUpdateView(UpdateView):
+    model = StaffInformation
+    form_class = StaffInformationForm
+    template_name = 'myapp2/staff_information_update.html'
+    success_url = reverse_lazy('myapp:home')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form- input'
+
+
