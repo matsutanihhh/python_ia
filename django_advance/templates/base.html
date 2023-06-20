@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Python 講座{% endblock %}</title>
+    <style>
+        .goods-image{
+        width:200px;
+        }
+    </style>
+</head>
+<body>
+    <p><a href="{% url 'accounts:home' %}">Homeへ</a>
+    /<a href="{% url 'crud:goods_list' %}">商品一覧へ</a></p>
+    <hr>
+    <div id="content">
+    {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

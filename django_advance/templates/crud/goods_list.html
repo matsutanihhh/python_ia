@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>商品リスト
+  <a href="{% url 'crud:goods_create' %}">作成</a></h2>
+{% for goods in goods_list %}
+  {% if goods.state_flag %}
+    <p>{{ goods.name }}
+      /<a href="{% url 'crud:goods_detail' goods.id %}">詳細</a></p>
+  {% endif %}
+{% endfor %}
+
+{% endblock %}

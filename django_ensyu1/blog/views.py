@@ -4,7 +4,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, FormView, L
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Article, Tag, Category
-from .forms import TagCreateForm, ArticleCreateForm
+from .forms import TagCreateForm, ArticleCreateForm, ArticleUpdateForm
 
 
 class Home(generic.TemplateView):
@@ -65,3 +65,16 @@ class ArticleCreateView(generic.CreateView):
     template_name = 'blog/article_create.html'
     success_url = reverse_lazy('blog:article_list')  # テンプレートで使った、urlタグみたいなもの
     form_class = ArticleCreateForm
+
+
+class ArticleUpdateView(generic.UpdateView):
+    model = Article
+    template_name = 'blog/article_update.html'
+    success_url = reverse_lazy('blog:article_list')
+    form_class = ArticleUpdateForm
+
+
+class ArticleDeleteView(generic.DeleteView):
+    model = Article
+    template_name = 'blog/article_delete.html'
+    success_url = reverse_lazy('blog:article_list')

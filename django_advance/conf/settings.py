@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
+    'crud.apps.CrudConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,3 +123,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# アプリケーション名.モデル名b
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+# ログイン用ページ
+LOGIN_URL = '/accounts/login/'
+
+# ログイン後に遷移するページ
+LOGIN_REDIRECT_URL = '/accounts/home/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'

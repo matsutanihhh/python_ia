@@ -10,5 +10,7 @@ urlpatterns = [
     path('category/list/', views.CategoryListView.as_view(), name='category_list'),
     path('article/detail/<int:pk>/', views.ArticleDetailView.as_view(), name='article_detail'),
     path('tag/create/', views.TagCreateView.as_view(), name="tag_create"),
-    path('article/create/', views.ArticleCreateView.as_view(), name="article_create")
+    path('article/create/', views.ArticleCreateView.as_view(), name="article_create"),
+    path('article/update/<int:pk>/', views.ArticleUpdateView.as_view(), name='article_update'),
+    path('article/delete/<int:pk>/', views.ArticleDeleteView.as_view(), name='article_delete')
 ]

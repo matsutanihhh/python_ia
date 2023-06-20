@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>記事詳細</h1>
+    <h1>記事詳細
+        / <a href="{% url 'blog:article_update' article.pk %}">更新</a>
+        / <a href="{% url 'blog:article_delete' article.pk %}">削除</a>
+    </h1>
 
     <h3>タイトル</h3>
         <p>{{article.title}}</p>
