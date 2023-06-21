@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-vgq+dw21f=95^15-t#-xp6_cbl_f0&+hwc$1_$1wvn2pdo=(x6'
+SECRET_KEY = 'django-insecure-ag-3^i2y=y@35%7qsry!)@z6-!#6=*7jqpzefgc444@32edc3e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,8 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
-    'crud.apps.CrudConfig',
-    'search.apps.SearchConfig',
+    'contacts.apps.ContactsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,14 +124,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# アプリケーション名.モデル名b
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
-# ログイン用ページ
-LOGIN_URL = '/accounts/login/'
+# メールを、ターミナルに表示する
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# ログイン後に遷移するページ
-LOGIN_REDIRECT_URL = '/accounts/home/'
-
-MEDIA_ROOT = BASE_DIR / 'media'
-MEDIA_URL = '/media/'
+# 送信元のメールアドレス（メール送信の際に送信元を設定しないとこのアドレスが使われる）
+DEFAULT_FROM_EMAIL = 'sample@internetacademy.co.jp'

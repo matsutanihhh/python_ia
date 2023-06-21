@@ -21,7 +21,18 @@ class ImageSizeLimitationForm(forms.ModelForm):
 
     def clean_image(self):
         image = self.cleaned_data.get('image', False)
+        # 画像がアップロードされていた場合
         if image:
-            if image.size > 10 * 1024:
+            # ImageFieldとFileFieldには.sizeという属性がある
+            if image.size > 10 * 1024: # 1kb = 1024byte
+                # clean_メソッドで何かエラーを出す時は
+                # raise forms.ValidationError('エラーメッセージ')
                 raise forms.ValidationError("ファイルサイズが大きすぎます")
         return image
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name', False)
+        # NGワードが、商品名に含まれていないかチェック
+        if 'NGワード' in name:
+            raise forms.ValidationError("NGワードがふくまれていました")
+        return name

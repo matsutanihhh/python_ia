@@ -20,3 +20,7 @@ class Goods(models.Model):
 
     def __str__(self):
         return self.name
+
+    def custom_delete(self):
+        self.state_flag = False
+        self.save()

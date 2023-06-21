@@ -1,0 +1,8 @@
+企業名：{{corporate.corporate_name}}
+担当者名：{{corporate.pic_name}}
+電話番号：{{corporate.phonenumber}}
+メールアドレス：{{corporate.email}}
+
+内容
+--------------------------------------------
+{{corporate.content}}

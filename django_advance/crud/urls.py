@@ -9,5 +9,6 @@ urlpatterns = [
     path('goods_detail/<int:pk>/', login_required(views.GoodsDetail.as_view()), name='goods_detail'),
     path('goods_update/<int:pk>/', login_required(views.GoodsUpdate.as_view()), name='goods_update'),
     path('goods_delete/<int:pk>/', login_required(views.GoodsDelete.as_view()), name='goods_delete'),
+    path('custom_delete/<int:pk>/', login_required(views.CustomDeleteView.as_view()), name='custom_delete'),
     path('goods_create_with_image_size_limitation/', login_required(views.GoodsCreateWithImageSizeLimitation.as_view()), name='goods_create_with_image_size_limitation')
 ]
