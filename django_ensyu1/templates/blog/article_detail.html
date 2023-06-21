@@ -27,4 +27,16 @@
         <!--linebreaks: 改行をHTML上に反映させるフィルタ-->
         <p>{{article.text | linebreaks }}</p>
 
+    <h1>コメント欄
+        / <a href="{% url 'blog:comment_create' article.pk %}">コメント投稿</a>
+    </h1>
+    {% for comment in article.comment_set.all %}
+
+        <div>
+            <h4>{{ comment.name }}</h4>
+            <p>{{ comment.text | linebreaks }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+
 {% endblock %}

@@ -1,0 +1,7 @@
+氏名：{{individual.fullname}}
+フリガナ：{{individual.kana}}
+メールアドレス：{{individual.email}}
+
+内容
+--------------------------------------------
+{{individual.content}}
